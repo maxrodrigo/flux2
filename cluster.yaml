@@ -4,8 +4,16 @@ kind: ClusterConfig
 metadata:
   name: flux2-poc-cluster
   region: eu-west-1
+iam:
+  withOIDC: true
 
 nodeGroups:
   - name: ng-1
     instanceType: m5.large
     desiredCapacity: 1
+    volumeSize: 20
+
+addons:
+  - name: vpc-cni
+  - name: coredns
+  - name: kube-proxy
